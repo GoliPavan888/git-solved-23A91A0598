@@ -1,84 +1,55 @@
-<<<<<<< HEAD
 # System Architecture
 
-## Overview
-DevOps Simulator follows a microservices architecture designed for high availability and scalability. This document covers both production and development configurations.
-
-## Components
-
-### 1. Application Server
-- **Technology**: Node.js + Express
-- **Production Port**: 8080
-- **Development Port**: 3000
-- **Scaling**: Horizontal auto-scaling (production only)
-- **Development Features**: Hot reload, debug mode
-
-### 2. Database Layer
-- **Database**: PostgreSQL 14
-- **Production**: Master-slave replication with automated backups
-- **Development**: Single local instance with seed data
-
-### 3. Monitoring System
-- **Production**: Prometheus + Grafana with email alerts
-- **Development**: Console logging with verbose output
-- **Metrics**: CPU, Memory, Disk, Network
-
-## Deployment Strategy
-
-### Production
-- **Method**: Rolling updates
-- **Zero-downtime**: Yes
-- **Rollback**: Automated on failure
-- **Region**: us-east-1
-
-### Development
-- **Method**: Docker Compose
-- **Features**: Hot reload, instant feedback
-- **Testing**: Automated tests before deployment
-
-## Security
-- **Production**: SSL/TLS encryption, strict access controls
-- **Development**: Relaxed security for easier debugging
-=======
-# System Architecture - Experimental Build
+---
 
 ## Overview
-DevOps Simulator follows an **event-driven microservices architecture** with AI/ML integration, designed for multi-cloud deployments and chaos engineering.
+DevOps Simulator uses a modular microservices architecture supporting high availability, multi-environment scaling, and AI-powered features for advanced use-cases.
 
-**⚠️ EXPERIMENTAL**: This architecture includes untested cutting-edge features.
+---
 
-## Core Components
+## Architecture Versions
 
-### 1. Application Server (AI-Enhanced)
-- **Technology**: Node.js + Express + TensorFlow.js
-- **Port**: 9000 (main), 9001 (metrics), 9002 (AI API)
-- **Scaling**: AI-powered predictive auto-scaling
-- **Intelligence**: Real-time ML inference
-- **Message Queue**: Apache Kafka for event streaming
+### v1.0 (Production/Development)
 
-### 2. Distributed Database Layer
-- **Primary**: PostgreSQL 14 cluster (5 nodes)
-- **Cache**: Redis cluster with ML-based cache optimization
-- **Configuration**: Multi-master replication
-- **Backup**: Continuous backup with geo-redundancy
-- **AI Features**: Query optimization, index suggestions
+**Production:**  
+- Node.js + Express application server (port 8080)  
+- PostgreSQL 14 (master-slave), Prometheus/Grafana monitoring  
+- Rolling updates, SSL/TLS, auto-scaling  
+- Automated backups, load balancer, monitoring alerts  
 
-### 3. AI/ML Pipeline
-- **Framework**: TensorFlow, PyTorch, Scikit-learn
-- **Models**: 
-  - Anomaly detection (LSTM neural network)
-  - Load prediction (XGBoost)
-  - Auto-scaling optimizer (Reinforcement Learning)
-- **Training**: Continuous online learning
-- **Inference**: Real-time predictions (<50ms latency)
+**Development:**  
+- Node.js + Express app (port 3000)  
+- PostgreSQL development instance, Docker Compose  
+- Debug mode, hot reload, mock APIs, CORS enabled
 
-### 4. Multi-Cloud Orchestration
-- **Supported Clouds**: AWS, Azure, GCP, DigitalOcean
-- **Orchestrator**: Kubernetes with custom CRDs
-- **Load Balancing**: Global anycast with GeoDNS
-- **Failover**: Automatic cross-cloud failover
+---
 
-### 5. Advanced Monitoring & Observability
-- **Metrics**: Prometheus + Thanos (long-term storage)
-- **Logs**: ELK Stack + AI log analysis
->>>>>>> d3dd9b2 (updating conflict-simulator)
+### v3.0 (Experimental/AI)
+
+**AI/Experimental Build:**  
+- **Server:** Node.js + Express + TensorFlow.js (main 9000, metrics 9001, AI API 9002)  
+- **Scaling:** ML-powered auto-scaling, event-driven with Apache Kafka  
+- **Database:** PostgreSQL cluster (5 nodes, distributed), Redis cache with ML optimization  
+- **AI Pipeline:** TensorFlow, PyTorch, Scikit-learn  
+    - Models: LSTM anomaly detection, XGBoost load prediction, RL auto-scaling  
+    - Online, real-time inference under 50ms  
+- **Orchestration:** Kubernetes, CRDs, GeoDNS, multi-cloud (AWS, Azure, GCP, DigitalOcean), cross-cloud failover  
+- **Monitoring:** Prometheus + Thanos, ELK + AI log analysis  
+- **Security:** Zero trust, AES-256 encryption, audit logging
+
+---
+
+## Component Map
+
+- **Application Servers:** Horizontal scaling, ports assigned per environment  
+- **Database Layer:** Master-slave/prod, local/dev, distributed+replication/experimental  
+- **AI/ML Pipeline (Experimental):** Real-time and continuous training, predictive scaling  
+- **Monitoring:** Production: Prometheus/Grafana, Dev: Console/verbose, Experimental: Extended+AI  
+- **Orchestration/Security:** Automated rollback, global failover, encryption, audit trail
+
+---
+
+## Update and merge policy
+
+**Always update within the matching version section and do not copy entire blocks.**  
+For new features, expand only in the appropriate version subsection above. This standard ensures future merges and branches do not conflict.
