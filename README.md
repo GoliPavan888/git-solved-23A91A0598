@@ -43,7 +43,6 @@ A comprehensive CI/CD configuration management tool for enterprise deployments.
 ### Production Mode
 export DEPLOY_ENV=production
 ./scripts/deploy.sh
-<<<<<<< HEAD
 
 ### Development Mode
 export DEPLOY_ENV=development
@@ -51,11 +50,6 @@ export DEPLOY_ENV=development
 
 ### Experimental/AI Mode
 Install AI dependencies
-=======
-## Quick Start - Advanced Mode
-```bash
-# Install AI dependencies
->>>>>>> 4880e10 (Initial commit)
 pip install tensorflow keras
 
 Initialize AI models
