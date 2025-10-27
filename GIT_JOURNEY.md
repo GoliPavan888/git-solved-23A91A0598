@@ -3,7 +3,7 @@
 ## Student Information
 - Name: Pavan Kumar Goli
 - Student ID: 23A91A0598
-- Repository: ttps://github.com/GoliPavan888/git-solved-23A91A0598.git 
+- Repository: https://github.com/GoliPavan888/git-solved-23A91A0598.git 
 - Date Started: 2025-10-25
 - Date Completed: 2025-10-27
 
