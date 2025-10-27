@@ -1,6 +1,6 @@
 # DevOps Simulator
 
-<<<<<<< HEAD
+
 A comprehensive CI/CD configuration management tool for enterprise deployments.
 
 ## Project Status
@@ -12,7 +12,6 @@ A comprehensive CI/CD configuration management tool for enterprise deployments.
 ## Features
 
 ### Core Features
-=======
 **EXPERIMENTAL BUILD** - Advanced CI/CD configuration management with AI integration.
 
 ## Project Status
@@ -29,7 +28,7 @@ A comprehensive CI/CD configuration management tool for enterprise deployments.
 - 🎯 Chaos engineering tools
 
 ## Legacy Features
->>>>>>> d3dd9b2 (updating conflict-simulator)
+ d3dd9b2 (updating conflict-simulator)
 - Automated deployment scripts
 - Real-time monitoring
 - Configuration management
@@ -55,7 +54,7 @@ A comprehensive CI/CD configuration management tool for enterprise deployments.
 ```bash
 export DEPLOY_ENV=production
 ./scripts/deploy.sh
-=======
+
 ## Quick Start - Advanced Mode
 ```bash
 # Install AI dependencies
@@ -89,4 +88,9 @@ See `/docs` folder and `/docs/ai-integration.md`
 
 ## License
 MIT License
->>>>>>> d3dd9b2 (updating conflict-simulator)
+
+ d3dd9b2 (updating conflict-simulator)
+
+
+"## FAQ" 
+b308c42 (docs: Add FAQ section)
