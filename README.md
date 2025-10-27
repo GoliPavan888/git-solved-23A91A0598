@@ -5,8 +5,8 @@ A comprehensive CI/CD configuration management tool for enterprise deployments.
 ## Project Status
 - **Version**: 1.0.0 (Production), 2.0.0-beta (Development)
 - **Environments**: Production & Development
-- **Student**: [YOUR NAME]
-- **Student ID**: [YOUR ID]
+- **Student**: Pavan Kumar Goli
+- **Student ID**: 23A91A0598
 
 ## Features
 
