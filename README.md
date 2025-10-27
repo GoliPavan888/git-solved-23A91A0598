@@ -76,13 +76,15 @@ MIT License
 
 
 
-
-"## FAQ" 
 # git-mastery-challenge-template
 A hands-on task to learn and practice Git and GitHub basics — including commits, branches, pull requests, and collaboration.
- ae630eb (Initial commit)
-"update" 
-df86ff7 (docs: Update README)
 
-"## FAQ" 
-b308c42 (docs: Add FAQ section)
+## FAQ
+
+**Q: How do I run this project?**  
+A: See the Quick Start section above for dev and prod instructions.
+
+**Q: Where do I find config templates?**  
+A: Review the `/config` folder for environment YAML and JSON files.
+
+
