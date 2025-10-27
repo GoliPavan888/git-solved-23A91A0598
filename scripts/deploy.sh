@@ -1,5 +1,5 @@
 #!/bin/bash
-<<<<<<< HEAD
+
 set -e
 
 # Multi-Environment Deploy Script
@@ -35,7 +35,8 @@ else
 fi
 
 echo "Deployment completed successfully!"
-=======
+
+
 # Experimental Deployment Script with AI
 # Version: 3.0.0-experimental
 
@@ -113,4 +114,7 @@ echo "Experimental deployment completed!"
 echo "AI Dashboard: https://ai.example.com"
 echo "Multi-Cloud Status: https://clouds.example.com"
 echo "================================================"
->>>>>>> d3dd9b2 (updating conflict-simulator)
+ d3dd9b2 (updating conflict-simulator)
+
+"BUG" 
+2cbf536 (Bad commit)
