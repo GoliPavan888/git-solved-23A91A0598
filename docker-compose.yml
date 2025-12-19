@@ -1,12 +1,12 @@
-version: "3.9"
-
 services:
-  pki-2fa:
+  app:
     build: .
-    container_name: pki-2fa
     ports:
-      - "8000:8000"
+      - "8080:8080"
     volumes:
-      - ./cron/last_code.txt:/app/cron/last_code.txt
-      - ./data/seed.txt:/app/data/seed.txt
-    restart: unless-stopped
+      - pki-2fa-seed-data:/data
+      - pki-2fa-cron-output:/cron-output
+
+volumes:
+  pki-2fa-seed-data:
+  pki-2fa-cron-output:
