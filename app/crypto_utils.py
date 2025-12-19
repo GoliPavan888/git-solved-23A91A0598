@@ -1,20 +1,21 @@
-# app/crypto_utils.py
 import base64
 import binascii
 import pyotp
-from cryptography.hazmat.primitives import hashes
+
+from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import padding
-from cryptography.hazmat.backends import default_backend
 
 
-def decrypt_seed(encrypted_seed_b64: str, private_key) -> str:
-    """Decrypt base64-encrypted seed using RSA/OAEP and return 64-char hex."""
-    # 1. Base64 decode
-    ciphertext = base64.b64decode(encrypted_seed_b64)
+def decrypt_seed(encrypted_seed_b64: str, private_key_pem: bytes) -> str:
+    private_key = serialization.load_pem_private_key(
+        private_key_pem,
+        password=None,
+    )
 
-    # 2. RSA/OAEP decrypt with SHA-256
-    plaintext_bytes = private_key.decrypt(
-        ciphertext,
+    encrypted_bytes = base64.b64decode(encrypted_seed_b64)
+
+    seed_bytes = private_key.decrypt(
+        encrypted_bytes,
         padding.OAEP(
             mgf=padding.MGF1(algorithm=hashes.SHA256()),
             algorithm=hashes.SHA256(),
@@ -22,30 +23,23 @@ def decrypt_seed(encrypted_seed_b64: str, private_key) -> str:
         ),
     )
 
-    # 3. Decode bytes to UTF-8
-    seed = plaintext_bytes.decode("utf-8")
+    seed = seed_bytes.decode("utf-8")
 
-    # 4. Validate 64-char hex
     if len(seed) != 64 or any(c not in "0123456789abcdef" for c in seed):
-        raise ValueError("Decrypted seed is not a 64-character hex string")
+        raise ValueError("Invalid seed")
 
-    # 5. Return hex seed
     return seed
 
 
-def generate_totp_code(hex_seed: str) -> str:
-    """Generate current 6-digit TOTP code from 64-char hex seed."""
-    # 1. Hex -> bytes
-    try:
-        seed_bytes = binascii.unhexlify(hex_seed)
-    except binascii.Error as e:
-        raise ValueError("Invalid hex seed") from e
-
-    # 2. Bytes -> base32 string
-    base32_seed = base64.b32encode(seed_bytes).decode("ascii")
-
-    # 3. TOTP object (SHA1, 30s, 6 digits)
-    totp = pyotp.TOTP(base32_seed, digits=6, interval=30)
-
-    # 4. Current code
+def generate_totp(hex_seed: str) -> str:
+    seed_bytes = binascii.unhexlify(hex_seed)
+    base32_seed = base64.b32encode(seed_bytes).decode()
+    totp = pyotp.TOTP(base32_seed)
     return totp.now()
+
+
+def verify_totp(hex_seed: str, code: str) -> bool:
+    seed_bytes = binascii.unhexlify(hex_seed)
+    base32_seed = base64.b32encode(seed_bytes).decode()
+    totp = pyotp.TOTP(base32_seed)
+    return totp.verify(code, valid_window=1)
